@@ -193,7 +193,7 @@
               required></textarea>
           </div>
           <div class="text-right"><br>
-            <button class="btn btn-primary solid blank" type="submit">Send Message</button>
+            <button id="btn" class="btn btn-primary solid blank" type="submit">Send Message</button>
           </div>
         </form>
       </div>
@@ -252,26 +252,35 @@
 
  
  </div>
- <script src=" https://smtpjs.com/v3/smtp.js"></script>
- <script>
-  function sendEmail(){
-    Email.send({
-    SecureToken:"6e78d0d4-33ea-4623-9bc4-2413dd374c08",
-    Host : "smtp.elasticemail.com",
-    Username : "narayanengineers2000@gmail.com",
-    Password : "6FD71B06B33E751DF63F58EEFC5807D016A4",
+ <script src="https://smtpjs.com/v3/smtp.js">
+</script>
+
+<script>
+ var btn = document.getElementById('btn');
+ btn.addEventListener('click',function(e){
+  e.preventDefault()
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var subject = document.getElementById('subject').value;
+  var message = document.getElementById('message').value;
+  var body = 'name: '+name + '<br/> email: ' + email + '<br/> subject: ' +subject + '<br/> message: '+message;
+  // console.log('Hi');
+
+  Email.send({
+    SecureToken : "181b8340-4e8e-4d2e-9597-dd620f01b005",
     To : 'narayanengineers2000@gmail.com',
-    From : document.getElementById("email").value,
-    Subject : "New Contact Form Enquiry",
-    Body : "Name:" + document.getElementById("name").value 
-    + "<br> Email: " + document.getElementById("email").value
-    + "<br> Subject: " + document.getElementById("subject").value
-    + "<br> Message: " + document.getElementById("message").value
+    From : "1rn20is108.prajwalbpb@gmail.com",
+    Subject : "Contact Form Update",
+    Body : body
 }).then(
-  message => alert("Message sent Succesfully")
+  message => alert(message)
 );
-  }
- </script>
+
+ })
+
+
+ 
+</script>
   </body>
 
   </html>
